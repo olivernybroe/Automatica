@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <title>Automatica webclient</title>
+      <link type="text/css" rel="stylesheet" href="./bower_components/bootstrap/dist/css/bootstrap.min.css"/>
+      <link type="text/css" rel="stylesheet" href="./css/infoBox.css">
+      <link type="text/css" rel="stylesheet" href="./font-awesome-4.6.3/css/font-awesome.min.css">
+      <link rel="stylesheet" href="./node_modules/angular-ui-switch/angular-ui-switch.min.css"/>
+  </head>
+  <body ng-app="awsiot.sample" ng-controller="AppController as vm">
+      <!--START: Header-->
+      <nav class="navbar navbar-default nonSelect">
+          <div class="container-fluid">
+              <div class="navbar-header">
+                  <p class="navbar-brand" style="font-size: 50px !important;">
+                      Automatica
+                  </p>
+              </div>
+              <ul class="nav navbar-nav navbar-right">
+                  <li><p class="navbar-brand">Last updated: {{vm.logs.logs[vm.logs.logs.length-1].createdTime | date: 'd. MMM, y HH:mm:ss'}}</p></li>
+              </ul>
+          </div><!-- /.container-fluid -->
+      </nav>
+      <!--END: Header-->
+      <div class="container-fluid">
+          <div class="row ">
+              <!--START: lights button-->
+              <div class="col-md-3 col-md-offset-3">
+                  <div class="info-box" ng-class="vm.sensors.lightOn() ? 'info-box-danger' : 'info-box-success'">
+                      <i class="fa fa-lightbulb-o info-box-logo"></i>
+                      <div class="info-box-title">
+                          Lights
+                          <div class="info-box-title-extra" ng-click="vm.sensors.manual = !vm.sensors.manual"><code>{{vm.sensors.manual ? 'Manual' : 'Automatic'}}</code></div>
+                      </div>
+                      <div class="info-box-desc">The light-sensor is detecting {{vm.sensors.light}} which can be translated to <code>{{vm.sensors.lightText()}}</code>.</div>
+                  </div>
+              </div>
+              <!--END: lights button-->
+              <!--START: motion button-->
+              <div class="col-md-3 col-md-offset-0">
+                  <div class="info-box" ng-class="vm.sensors.motion ? 'info-box-success' : 'info-box-info'">
+                      <i class="fa fa-male info-box-logo"></i>
+                      <div class="info-box-title">
+                          Movement
+                      </div>
+                      <div class="info-box-desc">The motion-sensor is detecting {{vm.sensors.motion}} which means there is <code>{{vm.sensors.motionText()}}</code>.</div>
+                  </div>
+              </div>
+              <!--END: motion button-->
+          </div>
+          <!--START: power buttons-->
+          <div class="row">
+              <div class="col-md-3" ng-repeat="(powerDevice, data) in vm.sensors.power">
+                  <div class="info-box info-box-success" ng-class="vm.sensors.inSync(powerDevice) ? 'info-box-success' : 'info-box-danger'">
+                      <div class="info-box-logo">
+                          <i class="fa fa-refresh fa-spin fa-fw fa-stack-1x" style="position: relative; font-size: 95px" ng-show="vm.sensors.inSync(powerDevice)"></i>
+                          <i class="fa fa-ban fa-stack-2x text-danger" style="position: relative; font-size: 95px" ng-hide="vm.sensors.inSync(powerDevice)"></i>
+                      </div>
+                      <div class="info-box-title">
+                          Device: <code>{{powerDevice}}</code>
+                      </div>
+                      <div class="info-box-desc">
+                          <switch ng-model="data.desired" on="On" off="Off" ng-disabled="!vm.sensors.manual" ng-change="vm.sendPowerState(powerDevice,data.desired)" class="green"></switch>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <!--END: power buttons-->
+          <!--START: Logs-->
+          <div class="row">
+              <h3>Logs:</h3>
+              <ul class="list-group">
+                  <li ng-repeat="log in vm.logs.logs | orderBy:'createdTime':true" class="list-group-item" ng-class="log.className">
+                      {{log.createdTime | date: 'medium'}} - {{log.content}}
+                  </li>
+              </ul>
+          </div>
+          <!--END: logs-->
+
+      </div>
+  </body>
+<script type="text/javascript" src="./bower_components/moment/min/moment.min.js"></script>
+<script type="text/javascript" src="./bower_components/angular/angular.min.js"></script>
+<script type="text/javascript" src="./bower_components/paho-mqtt-js/mqttws31.js"></script>
+<script type="text/javascript" src="./bower_components/cryptojslib/rollups/sha256.js"></script>
+<script type="text/javascript" src="./bower_components/cryptojslib/rollups/hmac-sha256.js"></script>
+<script type="text/javascript" src="./js/app.js"></script>
+<script type="text/javascript" src="./node_modules/angular-ui-switch/angular-ui-switch.js"></script>
+<script type="text/javascript" src="./js/config.js"></script>
+
+</html>
