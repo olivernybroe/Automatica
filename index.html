@@ -52,7 +52,7 @@
           <!--START: power buttons-->
           <div class="row">
               <div class="col-md-1" ng-repeat="(powerDevice, data) in vm.sensors.power">
-                  <div class="info-box info-box-xs" ng-class="vm.sensors.inSync(powerDevice) ? 'info-box-success' : 'info-box-danger'">
+                  <div class="info-box info-box-xs" ng-class="vm.sensors.inSync(powerDevice) ? (data.desired ? 'info-box-success' : 'info-box-danger') : 'info-box-warning'">
                       <div class="info-box-logo" style="font-size: 40px;" ng-show="vm.sensors.inSync(powerDevice)">
                           <i class="fa fa-refresh fa-spin fa-fw" style="margin-left: -5px"></i>
                       </div>
@@ -61,9 +61,8 @@
                       <div class="info-box-title">
                           Device: <code>{{powerDevice}}</code>
                       </div>
-                      <switch ng-model="data.desired" on="On" off="Off" ng-disabled="!vm.sensors.manual" ng-change="vm.sendPowerState(powerDevice,data.desired)" class="green switch-sm"></switch>
+                      <switch ng-model="data.desired" on="On" off="Off" ng-disabled="!vm.sensors.manual" ng-change="vm.sendPowerState(powerDevice,data.desired)" class=" switch-sm"></switch>
                   </div>
-                  <switch ng-model="data.desired" on="On" off="Off" ng-disabled="!vm.sensors.manual" ng-change="vm.sendPowerState(powerDevice,data.desired)" class="green"></switch>
               </div>
           </div>
           <!--END: power buttons-->
