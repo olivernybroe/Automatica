@@ -87,3 +87,4 @@ jspm_packages
 .node_repl_history
 
 aws_iot_config.h
+AWS-IoT-Arduino-Yun-SDK
