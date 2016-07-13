@@ -5,7 +5,8 @@
       <link type="text/css" rel="stylesheet" href="./bower_components/bootstrap/dist/css/bootstrap.min.css"/>
       <link type="text/css" rel="stylesheet" href="./css/infoBox.css">
       <link type="text/css" rel="stylesheet" href="./font-awesome-4.6.3/css/font-awesome.min.css">
-      <link rel="stylesheet" href="./node_modules/angular-ui-switch/angular-ui-switch.min.css"/>
+      <link rel="stylesheet" href="./node_modules/angular-ui-switch/angular-ui-switch.css"/>
+      <link rel="stylesheet" href="./css/switch.css"/>
   </head>
   <body ng-app="awsiot.sample" ng-controller="AppController as vm">
       <!--START: Header-->
@@ -26,7 +27,7 @@
           <div class="row ">
               <!--START: lights button-->
               <div class="col-md-3 col-md-offset-3">
-                  <div class="info-box" ng-class="vm.sensors.lightOn() ? 'info-box-danger' : 'info-box-success'">
+                  <div class="info-box info-box-lg" ng-class="vm.sensors.lightOn() ? 'info-box-danger' : 'info-box-success'">
                       <i class="fa fa-lightbulb-o info-box-logo"></i>
                       <div class="info-box-title">
                           Lights
@@ -38,7 +39,7 @@
               <!--END: lights button-->
               <!--START: motion button-->
               <div class="col-md-3 col-md-offset-0">
-                  <div class="info-box" ng-class="vm.sensors.motion ? 'info-box-success' : 'info-box-info'">
+                  <div class="info-box info-box-lg" ng-class="vm.sensors.motion ? 'info-box-success' : 'info-box-info'">
                       <i class="fa fa-male info-box-logo"></i>
                       <div class="info-box-title">
                           Movement
@@ -50,19 +51,19 @@
           </div>
           <!--START: power buttons-->
           <div class="row">
-              <div class="col-md-3" ng-repeat="(powerDevice, data) in vm.sensors.power">
-                  <div class="info-box info-box-success" ng-class="vm.sensors.inSync(powerDevice) ? 'info-box-success' : 'info-box-danger'">
-                      <div class="info-box-logo">
-                          <i class="fa fa-refresh fa-spin fa-fw fa-stack-1x" style="position: relative; font-size: 95px" ng-show="vm.sensors.inSync(powerDevice)"></i>
-                          <i class="fa fa-ban fa-stack-2x text-danger" style="position: relative; font-size: 95px" ng-hide="vm.sensors.inSync(powerDevice)"></i>
+              <div class="col-md-1" ng-repeat="(powerDevice, data) in vm.sensors.power">
+                  <div class="info-box info-box-xs" ng-class="vm.sensors.inSync(powerDevice) ? 'info-box-success' : 'info-box-danger'">
+                      <div class="info-box-logo" style="font-size: 40px;" ng-show="vm.sensors.inSync(powerDevice)">
+                          <i class="fa fa-refresh fa-spin fa-fw" style="margin-left: -5px"></i>
                       </div>
+                      <i class="fa fa-ban text-danger info-box-logo" ng-hide="vm.sensors.inSync(powerDevice)"></i>
+
                       <div class="info-box-title">
                           Device: <code>{{powerDevice}}</code>
                       </div>
-                      <div class="info-box-desc">
-                          <switch ng-model="data.desired" on="On" off="Off" ng-disabled="!vm.sensors.manual" ng-change="vm.sendPowerState(powerDevice,data.desired)" class="green"></switch>
-                      </div>
+                      <switch ng-model="data.desired" on="On" off="Off" ng-disabled="!vm.sensors.manual" ng-change="vm.sendPowerState(powerDevice,data.desired)" class="green switch-sm"></switch>
                   </div>
+                  <switch ng-model="data.desired" on="On" off="Off" ng-disabled="!vm.sensors.manual" ng-change="vm.sendPowerState(powerDevice,data.desired)" class="green"></switch>
               </div>
           </div>
           <!--END: power buttons-->

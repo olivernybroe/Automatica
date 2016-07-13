@@ -10,11 +10,8 @@
 }
 
 .info-box{
-    min-height: 140px;
     box-shadow: inset 0 0 1px 1px rgba(255, 255, 255, 0.35), 0 3px 1px -1px rgba(0, 0, 0, 0.1);
     border: 1px solid black;
-    margin-bottom: 30px;
-    padding: 20px;
     color: white;
     border-radius: 1px;
     -webkit-touch-callout: none;
@@ -25,20 +22,132 @@
     user-select: none;
     cursor:default;
 }
-
 .info-box .info-box-logo {
     display: block;
+    float: left;
+    text-align: center;
+    border-right: 2px solid rgba(255, 255, 255, 0.5);
+    color: rgba(255, 255, 255, 0.75);
+    position: relative;
+}
+.info-box .info-box-title {
+    font-weight: 700;
+}
+.info-box .info-box-title-secondary {
+    font-weight: 600;
+}
+
+.info-box code{
+    font-weight: bold;
+}
+
+.info-box .info-box-title-extra {
+    float: right;
+    cursor: pointer;
+}
+
+/*
+ * Lg size.
+ */
+
+.info-box-lg{
+    height: 140px;
+    min-width: 380px;
+    margin-bottom: 30px;
+    padding: 20px;
+}
+.info-box-lg .info-box-logo{
     height: 100px;
     font-size: 100px;
     line-height: 100px;
     width: 100px;
-    float: left;
-    text-align: center;
-    border-right: 2px solid rgba(255, 255, 255, 0.5);
     margin-right: 20px;
     padding-right: 20px;
-    color: rgba(255, 255, 255, 0.75);
 }
+.info-box-lg .info-box-title{
+    margin-top: -10px;
+    font-size: 34px;
+}
+.info-box-lg .info-box-title-secondary{
+    font-size: 12px;
+}
+.info-box-lg .info-box-desc {
+    margin-top: 10px;
+    font-size: 12px;
+}
+.info-box-lg .info-box-title-extra {
+    font-size: 12px;
+}
+
+/*
+ * sm size.
+ */
+.info-box-sm{
+    height: 100px;
+    min-width: 280px;
+    margin-bottom: 10px;
+    padding: 10px;
+}
+.info-box-sm .info-box-logo{
+    height: 80px;
+    font-size: 80px;
+    line-height: 80px;
+    width: 80px;
+    margin-right: 10px;
+    padding-right: 10px;
+}
+.info-box-sm .info-box-title{
+    margin-top: 0;
+    font-size: 20px;
+}
+.info-box-sm .info-box-title-secondary{
+    font-size: 12px;
+}
+.info-box-sm .info-box-desc {
+    margin-top: 10px;
+    font-size: 12px;
+}
+.info-box-sm .info-box-title-extra {
+    font-size: 12px;
+}
+
+
+/*
+ * xs size.
+ */
+.info-box-xs{
+    height: 60px;
+    min-width: 190px;
+    margin-bottom: 5px;
+    padding: 5px;
+}
+.info-box-xs .info-box-logo{
+    height: 50px;
+    font-size: 50px;
+    line-height: 50px;
+    width: 50px;
+    margin-right: 5px;
+    padding-right: 5px;
+}
+.info-box-xs .info-box-title{
+    margin-top: 0;
+    font-size: 18px;
+}
+.info-box-xs .info-box-title-secondary{
+    font-size: 12px;
+}
+.info-box-xs .info-box-desc {
+    margin-top: 0;
+    font-size: 12px;
+}
+.info-box-xs .info-box-title-extra {
+    font-size: 12px;
+}
+
+
+/*
+ *  Colors
+ */
 
 .info-box.info-box-danger {
     background: #d9534f;
@@ -62,26 +171,4 @@
     border: 1px solid #4cae4c;
 }
 
-.info-box .info-box-title {
-    margin-top: -10px;
-    font-size: 34px;
-    font-weight: 700;
-}
 
-.info-box .info-box-title-secondary {
-    font-size: 12px;
-    font-weight: 600;
-}
-.info-box .info-box-desc {
-    margin-top: 10px;
-    font-size: 12px;
-}
-.info-box code{
-    font-weight: bold;
-}
-
-.info-box .info-box-title-extra {
-    float: right;
-    font-size: 12px;
-    cursor: pointer;
-}
