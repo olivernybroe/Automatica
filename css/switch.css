@@ -1,5 +1,5 @@
+/* Change size of switch. */
 .switch.switch-sm{
-    /* frame */
     height: 20px;
     width: 40px;
 }

@@ -1,5 +1,5 @@
 {
-  "name": "mqtt-sample",
+  "name": "Automatica",
   "version": "1.0.0",
   "description": "",
   "main": "gulpfile.js",
@@ -10,6 +10,7 @@
   "license": "Apache-2.0",
   "dependencies": {
     "gulp": "^3.9.0",
-    "gulp-serve": "^1.2.0"
+    "gulp-serve": "^1.2.0",
+    "angular-ui-switch_scalable": "1.0.0"
   }
 }

@@ -1,9 +1,9 @@
 {
-  "name": "mqttSample",
+  "name": "Automatica",
   "authors": [
-    "Pan <xiaozhop@amazon.com>"
+    "Oliver Nybroe <olivernybroe@gmail.com>"
   ],
-  "description": "sample app for aws iot mqtt client in websocket",
+  "description": "Automatica system made with MQTT amazon.",
   "main": "",
   "moduleType": [],
   "license": "Apache-2.0",
