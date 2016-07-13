@@ -7,6 +7,7 @@
       <link type="text/css" rel="stylesheet" href="./node_modules/font-awesome/css/font-awesome.min.css">
       <link rel="stylesheet" href="./node_modules/angular-ui-switch/angular-ui-switch.css"/>
       <link rel="stylesheet" href="./css/switch.css"/>
+      <link rel="stylesheet" href="./css/custom.css"/>
   </head>
   <body ng-app="awsiot.sample" ng-controller="AppController as vm">
       <!--START: Header-->
@@ -18,7 +19,12 @@
                   </p>
               </div>
               <ul class="nav navbar-nav navbar-right">
-                  <li><p class="navbar-brand">Last updated: {{vm.logs.logs[vm.logs.logs.length-1].createdTime | date: 'd. MMM, y HH:mm:ss'}}</p></li>
+                  <li style="left: -20px;">
+                      <button class="btn  btn-lg navbar-btn" ng-click="vm.logsVisibility = !vm.logsVisibility" ng-class="vm.logsVisibility ? 'btn-warning' : 'btn-default'">Logs</button>
+                  </li>
+                  <li>
+                      <p class="navbar-brand">Last updated: {{vm.logs.logs[vm.logs.logs.length-1].createdTime | date: 'd. MMM, y HH:mm:ss'}}</p>
+                  </li>
               </ul>
           </div><!-- /.container-fluid -->
       </nav>
@@ -67,7 +73,7 @@
           </div>
           <!--END: power buttons-->
           <!--START: Logs-->
-          <div class="row">
+          <div class="row" ng-show="vm.logsVisibility">
               <h3>Logs:</h3>
               <ul class="list-group">
                   <li ng-repeat="log in vm.logs.logs | orderBy:'createdTime':true" class="list-group-item" ng-class="log.className">

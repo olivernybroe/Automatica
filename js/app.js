@@ -86,6 +86,7 @@
 
     /** controller of the app */
     function AppController($scope, endpoint, clientID, accessKey, secretKey, regionName){
+        this.logsVisibility = true;
         this.clientId = clientID;
         this.endpoint = endpoint;
         this.accessKey = accessKey;

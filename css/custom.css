@@ -1,0 +1,2 @@
+/* Remove outline from buttons */
+button:focus { outline:0 !important; }
