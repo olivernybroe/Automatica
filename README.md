@@ -8,7 +8,7 @@
 This is a project for DTU IOT course.
 It communicates with the Amazon IoT and uses the Amazon shadow.
 
-For more information on how it works, go to the Wiki page.
+For more information on how it works, go to the [Wiki page](https://github.com/uruloke/Automatica/wiki).
 
 # Requirements
   - Arduino Yún
