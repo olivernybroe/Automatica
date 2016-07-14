@@ -8,6 +8,8 @@
 This is a project for DTU IOT course.
 It communicates with the Amazon IoT and uses the Amazon shadow.
 
+For more information on how it works, go to the Wiki page.
+
 # Requirements
   - Arduino Yún
   - Light sensor ([Only tested with Groove Light sensor v1.1](http://www.seeedstudio.com/wiki/Grove_-_Light_Sensor))
