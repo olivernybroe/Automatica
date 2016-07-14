@@ -1,6 +1,7 @@
 (function() {
     'use strict';
 
+
     function LogMsg(type, content){
         this.type = type;
         this.content = content;
@@ -12,15 +13,18 @@
         }
     }
 
+    /**
+     * Log messages service
+     *
+     * This is the class for logging all the incoming messages
+     */
     function LogService(){
         this.logs = [];
     }
-
     LogService.prototype.log = function(msg) {
         var logObj = new LogMsg('success', msg);
         this.logs.push(logObj);
     };
-
     LogService.prototype.logError = function(msg) {
         var logObj = new LogMsg('error', msg);
         this.logs.push(logObj);
@@ -33,7 +37,12 @@
         return false;
     };
 
-
+    /**
+     * Sensor tracker
+     *
+     * This class keep track of all the sensors and power devices.
+     *
+     */
     function Sensors() {
         this.power = {};
         this.motion = false;
@@ -48,7 +57,6 @@
             'desired' : false
         }
     };
-
     Sensors.prototype.lightText = function () {
         if(this.light <= this.lightDarkness)
             return "Total darkness";
@@ -60,13 +68,11 @@
         return this.light >= this.lightTreshold;
 
     };
-
     Sensors.prototype.motionText = function () {
         if(!this.motion)
             return "No movement";
         return "movement";
     };
-
     Sensors.prototype.inSync = function (deviceName) {
         return this.power[deviceName].State == this.power[deviceName].desired;
     };
@@ -102,12 +108,14 @@
         this.createClient();
 
         var sensors = this.sensors;
+        //Subscribe to the topics required and updates the classes from the received data.
         angular.forEach(this.clients.val,function (client) {
             client.client.on('connected', function(){
                 //Subscribe to get.
                 client.topicName = '$aws/things/Automatica/shadow/get/accepted';
                 client.subscribe();
             });
+            //subscribe to all the topics
             client.client.on('subscribeSucess', function test(){
                 client.topicName = '$aws/things/Automatica/shadow/get';
                 client.message = '';
@@ -120,9 +128,6 @@
                 client.subscribe();
                 client.client.off('subscribeSucess', 'test');
             });
-
-
-
 
 
             //Update data when a message is received.
@@ -297,6 +302,7 @@
     /**
      * utilities to do sigv4
      * @class SigV4Utils
+     * @author Amazon
      */
     function SigV4Utils(){}
 
@@ -328,6 +334,7 @@
      * @param {string} options.secretKey
      * @param {string} options.clientId
      * @param {angular.IScope}  [scope]  - the angular scope used to trigger UI re-paint, you can
+     * @author Amazon
      omit this if you are not using angular
      */
     function MQTTClient(options, scope){
@@ -413,7 +420,6 @@
             return func.name != handlerName
         });
     };
-
 
     /** emit event
      *
