@@ -22,4 +22,5 @@ It communicates with the Amazon IoT and uses the Amazon shadow.
   3. Open the `js/config.example`fiel and setup it to match your settings.
   4. Connect the sensors and relay to the Arduino.
   5. Change the ports for the devices connected to the Arduino, so it matches the settings in the `Arduino/Automatica/Automatica.ino`.
-  6. Start the webserver and open up the `index.html` file and your are done.
+  6. `cd` to the folder and run `npm install` and `bower install` to install all the dependencies.
+  7. Start the webserver and open up the `index.html` file and your are done.
