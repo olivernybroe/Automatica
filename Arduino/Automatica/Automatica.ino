@@ -13,7 +13,7 @@
  *     It will update the shadow automatically each second (OBS! default value it can be changed.) 
  *     
  *     For changing the Amazon setup, go to the aws_iot_config.h and put in the values for your 
- *     project.-
+ *     project.
  *     
  *     Author: Oliver Nybroe (S153558@student.dtu.dk)
  *                                                            
@@ -55,11 +55,6 @@ void setup() {
   digitalWrite(RELAY_PIN,HIGH); //Turn off the relay.
   SEND_DATA_TIMER /= DELAY; //Translates SEND_DATA_TIMER in ms to number of rounds of delay.
   MOTION_DETECT_MIN = SEND_DATA_TIMER/MOTION_DETECT_MIN; //Translates percentage to rounds.
-
-  //Start the serial and wait for serial to be connected.
-//  Serial.begin(115200); 
-//  while(!Serial);
-
 
   // Set up the client
   if((myClient.setup(AWS_IOT_CLIENT_ID)) != 0){
