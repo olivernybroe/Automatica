@@ -21,8 +21,9 @@ For more information on how it works, go to the [Wiki page](https://github.com/u
 # Installation
   1. Setup the Arduino Yun WiFi and connect it to Amazon. [Follow all the steps on Amazon's SDK for Arduino yun](https://github.com/aws/aws-iot-device-sdk-arduino-yun#installation)
   2. Open the `Arduino/Automatica/aws_iot_config.example.h` file and setup it to match your settings.
-  3. Open the `js/config.example`fiel and setup it to match your settings.
+  3. Open the `js/config.example`file and setup it to match your settings.
   4. Connect the sensors and relay to the Arduino.
   5. Change the ports for the devices connected to the Arduino, so it matches the settings in the `Arduino/Automatica/Automatica.ino`.
+  6. Install ArduinoJSON library, follow the instructions on how to install [here](https://github.com/bblanchon/ArduinoJson)
   6. `cd` to the folder and run `npm install` and `bower install` to install all the dependencies.
   7. Start the webserver and open up the `index.html` file and your are done.
